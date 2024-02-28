@@ -1,14 +1,14 @@
 # MakeFile Atividade Pratica 2
-# Resultado do roteiro
 
 CC = arm-none-eabi-gcc
 RM = rm -rf
 
 OBJDIR = build
 DEPDIR = .deps
+DIR = src
 
-SRCS = startup.c \
-        main.c
+SRCS = $(DIR)/startup.c \
+        $(DIR)/main.c
 
 CFLAGS = -g -mcpu=cortex-m4 -mthumb -Wall -O0
 DEPFLAGS = -MMD -MP -MF $(DEPDIR)/$*.d
