@@ -1,26 +1,50 @@
 # Questionário Sistemas Embarcados I
 
 ## 1. Explique brevemente o que é compilação cruzada (***cross-compiling***) e para que ela serve.
+<b>R:<b/> <br/>
+Cross-compiling é um processo no qual o código fonte de um programa é compilado em um sistema de desenvolvimento que é diferente do sistema no qual o programa será executado. Essa abordagem é necessária quando o ambiente de desenvolvimento e o ambiente de execução têm arquiteturas de processador diferentes, sistemas operacionais diferentes, ou quando o sistema embarcado não possui recursos para realizar a compilação diretamente.
 
 ## 2. O que é um código de inicialização ou ***startup*** e qual sua finalidade?
+<b>R:<b/> <br/>
+É uma parte essencial que é responsável por configurar o ambiente de execução antes de transferir o controle para o programa principal. Ele é responsável pela configuração de Hardware, inicialização de memória, definição do vetor de interrupção, configuração do ambiente de execução, chamada do programa principal.
 
 ## 3. Sobre o utilitário **make** e o arquivo **Makefile responda**:
 
 #### (a) Explique com suas palavras o que é e para que serve o **Makefile**.
+<b>R:<b/> <br/>
+O Makefile é um arquivo de configuração usado em conjunto com o utilitário make para automatizar o processo de compilação e construção de projetos de software.
 
 #### (b) Descreva brevemente o processo realizado pelo utilitário **make** para compilar um programa.
+<b>R:<b/> <br/>
+O Make automatiza o processo de compilação dos programas lendo as regras e as dependências de um arquivo Makefile. Analizando as dependências entre arquivos fonte e objetos, o Make verifica se houve alterações e executa os comandos de compilação necessários. Ele gera objetos compilados, realiza a vinculação e cria o executável final.
 
 #### (c) Qual é a sintaxe utilizada para criar um novo **target**?
+<b>R:<b/> <br/>
+A sintaxe é: <br/>
+target:prerequisites <br/>
+recipe <br/>
+Onde os prerequisites são as dependências do target e o recipe são os comandos.
 
 #### (d) Como são definidas as dependências de um **target**, para que elas são utilizadas?
+<b>R:<b/> <br/>
+As dependências de um target em um Makefile são definidas logo após o nome do target, separadas por espaços.
+As dependências representam os arquivos ou outros targets que o target em questão precisa antes de ser construído. Quando o make é executado, ele verifica as datas de modificação dessas dependências em relação ao próprio target. Se alguma dependência tiver uma data de modificação mais recente do que a do target, o make entende que o target precisa ser reconstruído.
 
 #### (e) O que são as regras do **Makefile**, qual a diferença entre regras implícitas e explícitas?
+<b>R:<b/> <br/>
+Em um Makefile, as regras são declarações que especificam como gerar um target. Elas indicam as dependências necessárias e os comandos que devem ser executados para criar ou atualizar o target. As regras explícitas são aquelas em que você fornece explicitamente os comandos para construir um target específico. As regras implícitas são regras padrão incorporadas no **`make`** para compilar e vincular arquivos de determinados tipos.
 
 ## 4. Sobre a arquitetura **ARM Cortex-M** responda:
 
 ### (a) Explique o conjunto de instruções ***Thumb*** e suas principais vantagens na arquitetura ARM. Como o conjunto de instruções ***Thumb*** opera em conjunto com o conjunto de instruções ARM?
+<b>R:<b/> <br/>
+O conjunto de instruções Thumb é uma extensão da arquitetura ARM, otimizado para sistemas embarcados, oferecendo instruções mais compactas. Essa compacidade resulta em economia de espaço de memória e menor consumo de energia.
 
-### (b) Explique as diferenças entre as arquiteturas ***ARM Load/Store*** e ***Register/Register***.
+### (b) Explique as diferenças entre as arquiteturas ***ARM Load/Store*** e ***Register/Memory***.
+<b>R:<b/> <br/>
+Arquitetura ARM Load/Store: Nessa arquitetura, apenas as instruções de carga LDR e armazenamento STR podem acessar a memória. As operações de processamento são realizadas apenas entre registradores, e não diretamente entre registradores e memória.
+Arquitetura Register/Memory: Nessa abordagem, instruções de processamento podem operar diretamente entre registradores, sem a necessidade de acessar a memória.
+<br/>Diferenças: Enquanto as instruções Load/Store movem dados entre a memória e os registradores, as instruções Register/Memory operam diretamente em dados armazenados nos registradores e na memória, eliminando a necessidade de movimentação explícita de dados entre esses dois locais.
 
 ### (c) Os processadores **ARM Cortex-M** oferecem diversos recursos que podem ser explorados por sistemas baseados em **RTOS** (***Real Time Operating Systems***). Por exemplo, a separação da execução do código em níveis de acesso e diferentes modos de operação. Explique detalhadamente como funciona os níveis de acesso de execução de código e os modos de operação nos processadores **ARM Cortex-M**.
 
