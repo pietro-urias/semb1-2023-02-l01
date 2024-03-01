@@ -5,6 +5,7 @@ RM = rm -rf
 
 OBJDIR = build
 DEPDIR = .deps
+
 DIR = src
 
 SRCS = $(DIR)/startup.c \
